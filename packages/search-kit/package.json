@@ -1,0 +1,29 @@
+{
+  "name": "@pauljump/search-kit",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "better-sqlite3": ">=11.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^25.5.0",
+    "better-sqlite3": "^11.8.1",
+    "typescript": "^5.7.0",
+    "vitest": "^3.2.1"
+  }
+}

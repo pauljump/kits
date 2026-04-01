@@ -1,0 +1,4 @@
+
+> @pauljump/predict-kit@0.1.0 typecheck /Users/mini-home/Desktop/monorepo/packages/predict-kit
+> tsc --noEmit
+

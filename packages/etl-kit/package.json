@@ -1,0 +1,36 @@
+{
+  "name": "@pauljump/etl-kit",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  },
+  "peerDependencies": {
+    "puppeteer": ">=21.0.0"
+  },
+  "peerDependenciesMeta": {
+    "puppeteer": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "puppeteer": ">=21.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.2.1"
+  }
+}

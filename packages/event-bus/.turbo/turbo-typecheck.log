@@ -1,0 +1,4 @@
+
+> @pauljump/event-bus@0.1.0 typecheck /Users/mini-home/Desktop/monorepo/packages/event-bus
+> tsc --noEmit
+
