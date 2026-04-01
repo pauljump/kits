@@ -226,11 +226,20 @@ const result = await createPipeline({
 4. **Typed end-to-end.** TypeScript with strict mode. Every function signature, every return type, every option.
 5. **Test what matters.** Every package has tests that run against real SQLite (`:memory:`), not mocks.
 
+## Context
+
+These packages were built inside a private monorepo over months of daily shipping — 16 apps across iOS, web, and backend. They're not new code in new repos; they're extracted patterns that proved themselves across multiple production apps. I'm open-sourcing them to maintain them properly as standalone packages and because they solved problems I couldn't find good existing solutions for.
+
+Related projects from the same monorepo:
+- **[ai-factory](https://github.com/pauljump/ai-factory)** — the CLI that manages the knowledge layer across all these projects
+- **[teek](https://github.com/pauljump/teek)** — persona simulation engine, one of the packages the monorepo produces
+- **[polyfeeds](https://github.com/pauljump/polyfeeds)** — 106 prediction market data feeds, one of the apps these kits power
+
 ## Running Tests
 
 ```bash
 pnpm install
-pnpm test        # runs all package tests via turborepo
+pnpm test        # runs all 11 packages — 408 tests
 ```
 
 ## License
