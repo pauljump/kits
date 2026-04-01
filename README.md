@@ -1,22 +1,36 @@
 # Kits
 
-**SQLite primitives for apps that don't need Postgres.**
+**Composable backend primitives — extracted from 16 production apps.**
 
-Every app I build uses SQLite. After building 16 of them, I extracted the pieces that kept showing up — search, analytics, job queues, gamification, event routing, predictions, and data pipelines. Each one is a standalone npm package with zero infrastructure dependencies beyond a SQLite database.
-
-The design constraint: if it requires Redis, Kafka, Elasticsearch, or any external service, it doesn't belong here. These are primitives for apps that want to stay simple.
+After building 16 apps on the same stack, I extracted the pieces that kept showing up. Search, analytics, job queues, payments, notifications, availability monitoring, LLM integration, and more. Each one is a standalone npm package. Most use SQLite — no Postgres, no Redis, no external infrastructure.
 
 ## Packages
 
-| Package | What it does | External deps |
-|---------|-------------|---------------|
-| **[@pauljump/search-kit](packages/search-kit)** | Full-text search via FTS5 with BM25 ranking, snippets, and composable filters | SQLite |
-| **[@pauljump/job-queue](packages/job-queue)** | Persistent job scheduler with cron expressions, retry on failure, polling | SQLite |
-| **[@pauljump/analytics-kit](packages/analytics-kit)** | Event tracking, user identification, time-series counts, funnels | SQLite |
-| **[@pauljump/gamify-kit](packages/gamify-kit)** | Points ledger, streaks with gap detection, achievements with conditions | SQLite |
-| **[@pauljump/predict-kit](packages/predict-kit)** | Segmented pattern learning — outcome probabilities from dimensional bucketing | None |
-| **[@pauljump/event-bus](packages/event-bus)** | In-process pub/sub + webhook delivery with HMAC-SHA256 and retry | None |
-| **[@pauljump/etl-kit](packages/etl-kit)** | Fetch with retry, rate limiting, HTML scraping, pipeline orchestration | None |
+### Data & Storage (SQLite-backed)
+
+| Package | What it does | Used by |
+|---------|-------------|---------|
+| **[@pauljump/search-kit](packages/search-kit)** | Full-text search via FTS5 with BM25 ranking, snippets, and composable filters | 2 apps |
+| **[@pauljump/job-queue](packages/job-queue)** | Persistent job scheduler with cron expressions, retry on failure, polling | 1 app |
+| **[@pauljump/analytics-kit](packages/analytics-kit)** | Event tracking, user identification, time-series counts, funnels | 2 apps |
+| **[@pauljump/gamify-kit](packages/gamify-kit)** | Points ledger, streaks with gap detection, achievements with conditions | — |
+| **[@pauljump/watch-kit](packages/watch-kit)** | Availability monitoring — snapshot diffs, condition engine, grace periods | 2 apps |
+
+### Intelligence
+
+| Package | What it does | Used by |
+|---------|-------------|---------|
+| **[@pauljump/predict-kit](packages/predict-kit)** | Segmented pattern learning — outcome probabilities from dimensional bucketing | 2 apps |
+| **[@pauljump/llm-kit](packages/llm-kit)** | Provider-agnostic LLM client — OpenAI, Anthropic, Gemini with tool use | 10 apps |
+
+### Infrastructure
+
+| Package | What it does | Used by |
+|---------|-------------|---------|
+| **[@pauljump/etl-kit](packages/etl-kit)** | Fetch with retry, rate limiting, HTML scraping, pipeline orchestration | 5 apps |
+| **[@pauljump/event-bus](packages/event-bus)** | In-process pub/sub + webhook delivery with HMAC-SHA256 and retry | — |
+| **[@pauljump/notify-kit](packages/notify-kit)** | Email (Resend) + push notifications (APNs HTTP/2 with JWT) | 6 apps |
+| **[@pauljump/payments-kit](packages/payments-kit)** | Stripe checkout, billing portal, webhook verification | 2 apps |
 
 ## Why SQLite
 
