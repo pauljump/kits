@@ -245,3 +245,7 @@ pnpm test        # runs all 11 packages — 408 tests
 ## License
 
 MIT
+
+---
+
+**Part of a larger system.** See [pauljump/portfolio](https://github.com/pauljump/portfolio) for the full picture — 16 production apps, shared infrastructure, and the factory that builds them.
